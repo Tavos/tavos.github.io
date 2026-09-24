@@ -1,0 +1,265 @@
+{
+  "Vintage Chorus": [
+    "Rate",
+    "VIB Depth",
+    "Mix",
+    "Sync"
+  ],
+  "Chief DC2W": [
+    "Mix",
+    "Mode",
+    "Type",
+    "Drive",
+    "Output"
+  ],
+  "Chief CS3": [
+    "Sustain",
+    "Attack",
+    "Tone",
+    "Level"
+  ],
+  "MX Phase 95": [
+    "Speed",
+    "45/90",
+    "Script"
+  ],
+  "Exotic Z Boost": [
+    "Gain",
+    "Bass",
+    "Treble",
+    "Volume"
+  ],
+  "Rodent Drive": [
+    "Drive",
+    "Filter",
+    "Level"
+  ],
+  "Digital Delay": [
+    "Time",
+    "Feedback",
+    "Mix",
+    "Sync",
+    "High Pass",
+    "Low Pass",
+    "Mod Depth"
+  ],
+  "Slapback Delay": [
+    "Time",
+    "Feedback",
+    "Mix",
+    "Sync"
+  ],
+  "Simple Ping Pong Delay": [
+    "Time",
+    "Feedback",
+    "Mix",
+    "Sync",
+    "Stereo Width"
+  ],
+  "Ping Pong": [
+    "Time",
+    "Feedback",
+    "Mix",
+    "Sync",
+    "Stereo Width"
+  ],
+  "Dual Delay": [
+    "Time L",
+    "Time R",
+    "Feedback L/R",
+    "Feedback L",
+    "Feedback R",
+    "Mix",
+    "Cross Feedback",
+    "High Pass",
+    "Low Pass",
+    "Mod Depth",
+    "Sync"
+  ],
+  "Reverse Delay": [
+    "Time",
+    "Feedback",
+    "Mix",
+    "Sync",
+    "Flip",
+    "High Pass",
+    "Low Pass"
+  ],
+  "Plate": [
+    "Mix",
+    "Decay",
+    "Pre Delay",
+    "High Pass",
+    "Low Pass",
+    "LF Damping",
+    "HF Damping",
+    "Mod Depth",
+    "Trails"
+  ],
+  "Plate Lush": [
+    "Mix",
+    "Decay",
+    "Pre Delay",
+    "High Pass",
+    "Low Pass",
+    "LF Damping",
+    "HF Damping",
+    "Mod Depth",
+    "Trails"
+  ],
+  "Plate Tight": [
+    "Mix",
+    "Decay",
+    "Pre Delay",
+    "High Pass",
+    "Low Pass",
+    "LF Damping",
+    "HF Damping",
+    "Mod Depth",
+    "Trails"
+  ],
+  "Hall": [
+    "Mix",
+    "Decay",
+    "Pre Delay",
+    "Hi Pass",
+    "Low Pass",
+    "Trails"
+  ],
+  "Pitch Shifter": [
+    "Pitch",
+    "Fine",
+    "Mix"
+  ],
+  "Pitch Fine": [
+    "Pitch",
+    "Fine",
+    "Mix"
+  ],
+  "Crying Wah": [
+    "Position"
+  ],
+  "Graphic-9": [
+    "HPF",
+    "LPF",
+    "63 Hz",
+    "125 Hz",
+    "250 Hz",
+    "500 Hz",
+    "1 kHz",
+    "1.2 kHz",
+    "1.5 kHz",
+    "2 kHz",
+    "3 kHz",
+    "3.2 kHz",
+    "4 kHz",
+    "8 kHz",
+    "16 kHz"
+  ],
+  "UK C30 TopBoost": [
+    "Volume",
+    "Bass",
+    "Treble",
+    "Tone Cut",
+    "Boost",
+    "Output"
+  ],
+  "UK C30 Normal": [
+    "Volume",
+    "Bright",
+    "Tone Cut",
+    "Output"
+  ],
+  "Overlord Synth": [
+    "Mix",
+    "Gate",
+    "Sensitivity",
+    "Glide",
+    "Output",
+    "OSC1",
+    "OSC1 Level",
+    "OSC2",
+    "OSC2 Level",
+    "Filter",
+    "Cutoff",
+    "Resonance",
+    "Filter Drive",
+    "Envelope",
+    "Attack",
+    "Decay",
+    "Sustain",
+    "Arpeggiator",
+    "Root Note",
+    "Scale",
+    "Sync Note",
+    "Arp Pattern",
+    "Octave",
+    "Tuning"
+  ],
+  "Colossus Fuzz": [
+    "Fuzz",
+    "Level",
+    "Mode",
+    "Bass",
+    "Treble"
+  ],
+  "OD250": [
+    "Gain",
+    "Volume"
+  ],
+  "MX Flanger": [
+    "Mix",
+    "Speed",
+    "Manual",
+    "Regen",
+    "Sync"
+  ],
+  "Spring (M)": [
+    "Mix",
+    "Tone",
+    "Boing"
+  ],
+  "Tape Delay": [
+    "Time",
+    "Feedback",
+    "Mix",
+    "Mod Depth"
+  ],
+  "Rols Jazz CH120": [
+    "Volume",
+    "Bright",
+    "Chorus",
+    "Output"
+  ],
+  "US TWN Normal": [
+    "Volume",
+    "Bass",
+    "Mid",
+    "Treble",
+    "Bright",
+    "Output"
+  ],
+  "Watt D103 Bright": [
+    "Gain",
+    "Bass",
+    "Middle",
+    "Treble",
+    "Master",
+    "Presence",
+    "Output"
+  ],
+  "Watt D103 Normal": [
+    "Gain",
+    "Bass",
+    "Middle",
+    "Treble",
+    "Master",
+    "Presence",
+    "Output"
+  ],
+  "MX Vibes": [
+    "Speed",
+    "Intensity",
+    "Mode"
+  ]
+}
