@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="cerati">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Gustavo Cerati Tone Guides — Quad Cortex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <style>
+    .index-wrap { max-width: 920px; margin: 0 auto; padding: 48px 24px 80px; }
+    .index-wrap h1 { font-family: var(--display); font-size: clamp(2.4rem, 6vw, 3.6rem); margin: 0 0 8px; }
+    .index-wrap .lede { color: var(--muted); max-width: 42rem; }
+    .album-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 36px; }
+    .album-cards a {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; transition: transform .2s var(--ease), border-color .2s;
+    }
+    .album-cards a:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .album-cards img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #1a1a1a; }
+    .album-cards .meta { padding: 16px 18px 20px; }
+    .album-cards h2 { font-family: var(--display); margin: 0 0 6px; font-size: 1.35rem; }
+    .album-cards p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div class="index-wrap">
+    <p class="kicker">Gustavo Cerati · CorOS 4.1.0 · QC-only</p>
+    <h1>Quad Cortex tone guides</h1>
+    <p class="lede">Interactive signal chains for <em>Ahí Vamos</em> and <em>Siempre es Hoy</em> — stock amp/cab merges, CorOS 4.1.0 device params. Part of the <a href="../../index.html">qc-tone-guides</a> collection. Related Unplugged tones live under <a href="../Soda%20Stereo/html/index.html">Soda Stereo</a>.</p>
+    <div class="album-cards">
+      <a href="ahi-vamos.html">
+        <img src="assets/art/ahi-vamos.jpg" alt="Ahí Vamos">
+        <div class="meta">
+          <h2>Ahí Vamos</h2>
+          <p>2006 · Template I · UK C30 + Brit 2203</p>
+        </div>
+      </a>
+      <a href="siempre-es-hoy.html">
+        <img src="assets/art/siempre-es-hoy.jpg" alt="Siempre es Hoy">
+        <div class="meta">
+          <h2>Siempre es Hoy</h2>
+          <p>2002 · Template K · Rols Jazz + Brit 2203</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
