@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dsotm">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pink Floyd Tone Guides — Quad Cortex</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../../assets/styles.css">
+  <style>
+    .index-wrap { max-width: 920px; margin: 0 auto; padding: 48px 24px 80px; }
+    .index-wrap h1 { font-family: var(--display); font-size: clamp(2.4rem, 6vw, 3.6rem); margin: 0 0 8px; }
+    .index-wrap .lede { color: var(--muted); max-width: 42rem; }
+    .album-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; margin-top: 36px; }
+    .album-cards a {
+      display: block; text-decoration: none; color: inherit;
+      background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+      overflow: hidden; transition: transform .2s var(--ease), border-color .2s;
+    }
+    .album-cards a:hover { transform: translateY(-3px); border-color: var(--accent); }
+    .album-cards img { width: 100%; aspect-ratio: 1; object-fit: cover; display: block; background: #1a1a1a; }
+    .album-cards .meta { padding: 16px 18px 20px; }
+    .album-cards h2 { font-family: var(--display); margin: 0 0 6px; font-size: 1.35rem; }
+    .album-cards p { margin: 0; color: var(--muted); font-size: 0.95rem; }
+  </style>
+</head>
+<body>
+  <div class="index-wrap">
+    <p class="kicker">Pink Floyd · CorOS 4.1.0 · QC-first</p>
+    <h1>Quad Cortex tone guides</h1>
+    <p class="lede">Interactive signal chains for <em>The Dark Side of the Moon</em> — stock Watt D103 / US TWN merge, optional Lifeson Legacy hybrid. Part of the <a href="../../README.md">qc-tone-guides</a> collection.</p>
+    <div class="album-cards">
+      <a href="dark-side-of-the-moon.html">
+        <img src="assets/art/dark-side-of-the-moon.jpg" alt="The Dark Side of the Moon">
+        <div class="meta">
+          <h2>The Dark Side of the Moon</h2>
+          <p>1973 · Template J · Watt D103 + Twin</p>
+        </div>
+      </a>
+    </div>
+  </div>
+</body>
+</html>
