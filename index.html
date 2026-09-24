@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QC Tone Guides — Quad Cortex</title>
+  <meta name="description" content="Browse interactive Neural DSP Quad Cortex tone guides by artist — CorOS 4.1.0 signal chains, scenes, and presets.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Syne:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #0c0e12;
+      --bg-2: #141820;
+      --panel: rgba(28, 34, 44, 0.78);
+      --line: rgba(212, 184, 120, 0.22);
+      --text: #f2eee6;
+      --muted: #9aa3b0;
+      --accent: #d4a24c;
+      --accent-2: #5ec4c0;
+      --radius: 16px;
+      --ease: cubic-bezier(0.22, 1, 0.36, 1);
+      --font: "Source Serif 4", Georgia, serif;
+      --display: "Syne", sans-serif;
+      --mono: "IBM Plex Mono", ui-monospace, monospace;
+      --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 0.5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text);
+      line-height: 1.5;
+      background:
+        radial-gradient(900px 520px at 12% -10%, rgba(212, 162, 76, 0.28), transparent 55%),
+        radial-gradient(700px 480px at 92% 8%, rgba(94, 196, 192, 0.18), transparent 50%),
+        radial-gradient(1000px 600px at 50% 110%, rgba(212, 162, 76, 0.1), transparent 55%),
+        linear-gradient(165deg, #0a0c10 0%, #12161e 45%, #0c1016 100%);
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 40;
+      opacity: 0.07;
+      background-image: var(--grain);
+      mix-blend-mode: overlay;
+    }
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: grid;
+      align-items: end;
+      padding: clamp(28px, 5vw, 56px);
+      overflow: hidden;
+    }
+    .hero-visual {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(180deg, transparent 40%, rgba(12, 14, 18, 0.45) 72%, var(--bg) 100%),
+        url("assets/ndsp-hero.jpg") center / cover no-repeat;
+      transform: scale(1.02);
+      animation: drift 28s var(--ease) infinite alternate;
+    }
+    @keyframes drift {
+      from { transform: scale(1.02) translate3d(0, 0, 0); }
+      to { transform: scale(1.06) translate3d(-1.5%, -1%, 0); }
+    }
+    .hero-shade {
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(105deg, rgba(12, 14, 18, 0.72) 0%, rgba(12, 14, 18, 0.42) 48%, rgba(12, 14, 18, 0.28) 100%);
+    }
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+      max-width: 40rem;
+      animation: rise 0.9s var(--ease) both;
+    }
+    @keyframes rise {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .brand {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(3rem, 10vw, 5.6rem);
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      margin: 0 0 18px;
+      background: linear-gradient(115deg, var(--text) 15%, var(--accent) 55%, var(--accent-2) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .hero h2 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: clamp(1.25rem, 2.6vw, 1.7rem);
+      margin: 0 0 12px;
+      letter-spacing: -0.02em;
+    }
+    .hero p {
+      margin: 0 0 28px;
+      color: var(--muted);
+      font-size: 1.05rem;
+      max-width: 34rem;
+    }
+    .cta-row { display: flex; flex-wrap: wrap; gap: 12px; }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      transition: transform 0.2s var(--ease), background 0.2s, border-color 0.2s;
+    }
+    .cta-primary {
+      background: color-mix(in srgb, var(--accent) 88%, black);
+      color: #14110c;
+      border: 1px solid transparent;
+    }
+    .cta-primary:hover { transform: translateY(-2px); background: var(--accent); }
+    .cta-ghost {
+      color: var(--text);
+      border: 1px solid var(--line);
+      background: rgba(20, 24, 32, 0.45);
+    }
+    .cta-ghost:hover { border-color: var(--accent-2); color: var(--accent-2); }
+
+    .browse {
+      position: relative;
+      z-index: 2;
+      padding: 12px clamp(28px, 5vw, 56px) 80px;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .browse-head {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px 24px;
+      align-items: end;
+      justify-content: space-between;
+      margin-bottom: 28px;
+      animation: rise 0.9s 0.15s var(--ease) both;
+    }
+    .browse-head h2 {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3vw, 2.1rem);
+      margin: 0 0 6px;
+      letter-spacing: -0.02em;
+    }
+    .browse-head .lede {
+      margin: 0;
+      color: var(--muted);
+      max-width: 36rem;
+    }
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+    }
+    .search {
+      width: min(260px, 100%);
+      padding: 11px 14px;
+      border-radius: 999px;
+      border: 1px solid var(--line);
+      background: rgba(20, 24, 32, 0.7);
+      color: var(--text);
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      outline: none;
+    }
+    .search:focus { border-color: var(--accent-2); }
+    .search::placeholder { color: var(--muted); }
+    .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+    .filter {
+      appearance: none;
+      border: 1px solid var(--line);
+      background: transparent;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      padding: 8px 12px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: border-color 0.2s, color 0.2s, background 0.2s;
+    }
+    .filter:hover { color: var(--text); border-color: color-mix(in srgb, var(--accent) 50%, var(--line)); }
+    .filter.active {
+      color: #14110c;
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+      gap: 20px;
+      animation: rise 0.9s 0.25s var(--ease) both;
+    }
+    .artist {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      text-decoration: none;
+      color: inherit;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      transition: transform 0.25s var(--ease), border-color 0.25s, box-shadow 0.25s;
+    }
+    .artist:hover {
+      transform: translateY(-4px);
+      border-color: color-mix(in srgb, var(--accent) 55%, var(--line));
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+    }
+    .artist:focus-visible {
+      outline: 2px solid var(--accent-2);
+      outline-offset: 3px;
+    }
+    .covers {
+      display: block;
+      aspect-ratio: 16 / 10;
+      background: #10141a;
+      overflow: hidden;
+    }
+    .covers img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.45s var(--ease), filter 0.45s;
+    }
+    .artist:hover .covers img { transform: scale(1.04); filter: saturate(1.08); }
+    .meta {
+      padding: 16px 18px 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 8rem;
+    }
+    .meta .rig {
+      display: inline-flex;
+      align-self: flex-start;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #14110c;
+      background: var(--accent-2);
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin: 0;
+    }
+    .meta .rig[data-kind="qc"] {
+      background: var(--accent);
+    }
+    .meta h3 {
+      font-family: var(--display);
+      font-size: 1.35rem;
+      margin: 0;
+      letter-spacing: -0.02em;
+    }
+    .meta .albums {
+      margin: 0;
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.45;
+    }
+    .meta .albums-label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: color-mix(in srgb, var(--muted) 85%, var(--text));
+      margin-bottom: 4px;
+    }
+    .artist.hidden { display: none; }
+
+    .empty {
+      display: none;
+      margin-top: 28px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.85rem;
+    }
+    .empty.show { display: block; }
+
+    footer {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 clamp(28px, 5vw, 56px) 48px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+    }
+    footer a { color: var(--accent-2); }
+
+    @media (max-width: 640px) {
+      .hero { min-height: 88vh; align-items: end; }
+      .browse-head { align-items: stretch; }
+      .controls { width: 100%; }
+      .search { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .hero-visual, .hero-copy, .browse-head, .grid { animation: none; }
+      .artist, .covers img, .cta { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <header class="hero">
+    <div class="hero-visual" aria-hidden="true"></div>
+    <div class="hero-shade" aria-hidden="true"></div>
+    <div class="hero-copy">
+      <p class="brand">QC Tone Guides</p>
+      <h2>Interactive Quad Cortex signal chains</h2>
+      <p>Browse artist guides built for CorOS 4.1.0 — stock amps, optional TONEX hybrids, scene maps, and dial-in notes.</p>
+      <div class="cta-row">
+        <a class="cta cta-primary" href="#artists">Browse artists</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="browse" id="artists">
+    <div class="browse-head">
+      <div>
+        <h2>Artists</h2>
+        <p class="lede">Open a guide to pick an album, song, and scene. Chains update live with Mixer levels and active blocks.</p>
+      </div>
+      <div class="controls">
+        <input class="search" id="search" type="search" placeholder="Filter artists or albums" aria-label="Filter artists">
+        <div class="filters" role="group" aria-label="Rig filter">
+          <button type="button" class="filter active" data-filter="all">All</button>
+          <button type="button" class="filter" data-filter="qc">QC Only</button>
+          <button type="button" class="filter" data-filter="hybrid">Hybrid</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="grid">
+      <a class="artist" href="Rush/html/index.html" data-rig="hybrid" data-search="rush alex lifeson 2112 moving pictures signals roll the bones tonex hybrid">
+        <div class="covers">
+          <img src="Rush/html/assets/art/moving-pictures.jpg" alt="">
+        </div>
+        <div class="meta">
+          <span class="rig" data-kind="hybrid">Hybrid</span>
+          <h3>Rush</h3>
+          <p class="albums"><span class="albums-label">Albums</span>2112 · Moving Pictures · Signals · Roll the Bones</p>
+        </div>
+      </a>
+
+      <a class="artist" href="Foo%20Fighters/html/index.html" data-rig="qc" data-search="foo fighters wasting light sonic highways qc only">
+        <div class="covers">
+          <img src="Foo%20Fighters/html/assets/art/wasting-light.jpg" alt="">
+        </div>
+        <div class="meta">
+          <span class="rig" data-kind="qc">QC Only</span>
+          <h3>Foo Fighters</h3>
+          <p class="albums"><span class="albums-label">Albums</span>Wasting Light · Sonic Highways</p>
+        </div>
+      </a>
+
+      <a class="artist" href="Pink%20Floyd/html/index.html" data-rig="qc" data-search="pink floyd dark side of the moon watt hiwatt gilmour qc only">
+        <div class="covers">
+          <img src="Pink%20Floyd/html/assets/art/dark-side-of-the-moon.jpg" alt="">
+        </div>
+        <div class="meta">
+          <span class="rig" data-kind="qc">QC Only</span>
+          <h3>Pink Floyd</h3>
+          <p class="albums"><span class="albums-label">Albums</span>The Dark Side of the Moon</p>
+        </div>
+      </a>
+
+      <a class="artist" href="Muse/html/index.html" data-rig="hybrid" data-search="muse bellamy diezel ac30 essentials hysteria hybrid">
+        <div class="covers">
+          <img src="Muse/html/assets/art/muse-essentials.jpg" alt="">
+        </div>
+        <div class="meta">
+          <span class="rig" data-kind="hybrid">Hybrid</span>
+          <h3>Muse</h3>
+          <p class="albums"><span class="albums-label">Albums</span>Essentials</p>
+        </div>
+      </a>
+
+      <a class="artist" href="Incubus/html/index.html" data-rig="hybrid" data-search="incubus morning view mesa tonex hybrid">
+        <div class="covers">
+          <img src="Incubus/html/assets/art/morning-view.jpg" alt="">
+        </div>
+        <div class="meta">
+          <span class="rig" data-kind="hybrid">Hybrid</span>
+          <h3>Incubus</h3>
+          <p class="albums"><span class="albums-label">Albums</span>Morning View</p>
+        </div>
+      </a>
+
+      <a class="artist" href="Soda%20Stereo/html/index.html" data-rig="qc" data-search="soda stereo comfort musica para volar unplugged cerati qc only">
+        <div class="covers">
+          <img src="Soda%20Stereo/html/assets/art/comfort.jpg" alt="">
+        </div>
+        <div class="meta">
+          <span class="rig" data-kind="qc">QC Only</span>
+          <h3>Soda Stereo</h3>
+          <p class="albums"><span class="albums-label">Albums</span>Comfort y Música Para Volar</p>
+        </div>
+      </a>
+
+      <a class="artist" href="Gustavo%20Cerati/html/index.html" data-rig="qc" data-search="gustavo cerati ahi vamos c30 brit qc only">
+        <div class="covers">
+          <img src="Gustavo%20Cerati/html/assets/art/ahi-vamos.jpg" alt="">
+        </div>
+        <div class="meta">
+          <span class="rig" data-kind="qc">QC Only</span>
+          <h3>Gustavo Cerati</h3>
+          <p class="albums"><span class="albums-label">Albums</span>Ahí Vamos · Siempre es Hoy</p>
+        </div>
+      </a>
+    </div>
+
+    <p class="empty" id="empty" role="status">No artists match that filter.</p>
+  </main>
+
+  <footer>
+    CorOS 4.1.0
+  </footer>
+
+  <script>
+    (function () {
+      const cards = [...document.querySelectorAll(".artist")];
+      const search = document.getElementById("search");
+      const empty = document.getElementById("empty");
+      const filters = [...document.querySelectorAll(".filter")];
+      let rig = "all";
+
+      function apply() {
+        const q = (search.value || "").trim().toLowerCase();
+        let visible = 0;
+        cards.forEach((card) => {
+          const rigOk = rig === "all" || card.dataset.rig === rig;
+          const text = (card.dataset.search || "") + " " + card.textContent.toLowerCase();
+          const qOk = !q || text.includes(q);
+          const show = rigOk && qOk;
+          card.classList.toggle("hidden", !show);
+          if (show) visible += 1;
+        });
+        empty.classList.toggle("show", visible === 0);
+      }
+
+      filters.forEach((btn) => {
+        btn.addEventListener("click", () => {
+          filters.forEach((b) => b.classList.remove("active"));
+          btn.classList.add("active");
+          rig = btn.dataset.filter;
+          apply();
+        });
+      });
+      search.addEventListener("input", apply);
+    })();
+  </script>
+</body>
+</html>
